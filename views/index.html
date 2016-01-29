@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/bootstrap.min.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  </head>
+  <body>
+    <div class="container">
+
+      <h1>Messages {{deviceId}}</h1>
+      <table class="table-striped table-bordered table-hover table-condensed">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Frame</th>
+            <th>Mode</th>
+            <th>Type</th>
+            <th>Battery V</th>
+            <th>Humidity %</th>
+            <th>Temperature (Approx)</th>
+            <th>Temperature (Precise)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each messages}}
+            <tr>
+              <td>{{date}}</td>
+              <td>{{frameStr}}</td>
+              <td>{{mode}}</td>
+              <td>{{frameType}}</td>
+              <td>{{battery}}</td>
+              <td>{{humidity}}</td>
+              <td>{{temperatureLP}}</td>
+              <td>{{temperature}}</td>
+            </tr>
+      {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
