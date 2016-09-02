@@ -34,7 +34,7 @@ SIGFOXMsg.prototype.getMode = function(){
   //Mode : bits 1 to 3
   var mode = this.bytes[0] & 0b111;
   //frame type: bits 6 & 7
-  var frameType = (this.bytes[0] >> 4) & 0b11;
+  var frameType = (this.bytes[0] >> 5 ) & 0b11;
   
   switch (mode){
       case 0: this.mode='Button';
@@ -87,6 +87,8 @@ SIGFOXMsg.prototype.getValues = function(){
         this.getTemperature();
         
         break;
+      case 'Light':
+        this.getLight();
   }
 };
 SIGFOXMsg.prototype.getTemperatureLowPrecision = function(){
@@ -98,17 +100,16 @@ SIGFOXMsg.prototype.getTemperatureLowPrecision = function(){
 };
 SIGFOXMsg.prototype.getTemperature = function(){
   //MSB : First 4 bits of byte 2
-  
   var MSB = Number(this.bytes[1] >> 4).toString(2);
-  //console.log('temp MSB %s - %s', MSB,parseInt(MSB,2));
+  console.log('temp MSB %s - %s', MSB,parseInt(MSB,2));
   
   //LSB : 6 last bits of byte 3
   var LSB = Number(this.bytes[2] & 0b111111, 2).toString(2);
   while (LSB.length < 6){
     LSB = '0'+LSB;
   }
-  //console.log('temp LSB %s - %s', LSB, parseInt(LSB,2));
-  //console.log('temperature', MSB+LSB, parseInt(MSB+LSB, 2));
+  console.log('temp LSB %s - %s', LSB, parseInt(LSB,2));
+  console.log('temperature', MSB+LSB, parseInt(MSB+LSB, 2));
   
   this.temperature = (parseInt(MSB+LSB,2)-200) / 8;
 
@@ -119,6 +120,34 @@ SIGFOXMsg.prototype.getHumidity = function(){
   this.humidity = this.bytes[3] / 2;
 };
 
+SIGFOXMsg.prototype.getLight = function(){
+  console.log("Get Light", this.bytes[2], new Number(this.bytes[2]).toString(16),new Number(this.bytes[2]).toString(2));
+  //Value	 b0-5
+  //Multiplier b6 - b7
+  var lightValue = this.bytes[2] & 0b111111;
+  console.log("value", lightValue);
+  var lightMultiplier = this.getLightMultiplier();
+  console.log('x factor', lightMultiplier);
+  this.light = 0.01 * lightMultiplier * lightValue;
+};
+SIGFOXMsg.prototype.getLightMultiplier = function(){
+  /*
+  Multiplier value	Final multiplier
+  0	1
+  1	8
+  2	64
+  3	2014
+  */
+  var multiplier = this.bytes[2] >> 6;
+console.log("multiplier", multiplier);
+  
+  switch (multiplier){
+      case 0 : return 1;
+      case 1 : return 8;
+      case 2 : return 64;
+      default: return 2014;
+  }
+};
 module.exports = {
   getMessages:function(id){
     
