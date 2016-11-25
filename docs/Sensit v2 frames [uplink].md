@@ -17,17 +17,16 @@ Or `{bit 7}{bit 6}{bit 5}{bit 4}{bit 3}{bit 2}{bit 1}{bit 0}`
 
 
 ###First byte
-
-Mode | Timeframe | Type | Battery MSB | 
------------- | ------------- | ------------
-b0-b2 | b3-b4 | b5-b6 | b7 |
-3 bits | 2 bits| 2 bits| 1 bit|
+| Mode | Timeframe | Type | Battery MSB | 
+| ------------ | ------------- | ------------ | ------------ |
+| b0-b2 | b3-b4 | b5-b6 | b7 |
+| 3 bits | 2 bits | 2 bits | 1 bit |
 
 ###Second byte
-T° MSB | Battery LSB
------------- | -------------
-b0-b3 | b4-b7 | 
- 4 bits| 4 bits
+| T° MSB | Battery LSB |
+| ------------ | ------------- |
+| b0-b3 | b4-b7 | 
+| 4 bits | 4 bits | 
 ###Following bytes
 Data bytes, between 2 and 10 bytes depending on the active mode
 
