@@ -46,7 +46,7 @@ Data bytes, between 2 and 10 bytes depending on the active mode
 | ----- | ---- |
 | 0 | 10 mins |
 | 1 | 1 hour |
-| 2 | 6 jours |
+| 2 | 6 hours |
 | 3 | 24 hours |
 
 ##Type
