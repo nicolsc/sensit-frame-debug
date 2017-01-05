@@ -10,6 +10,12 @@
   * Humidity % if relevant
 
 
+
+##Prerequisites 
+
+Your [Sensit](http://sensit.io) should be registered to your [SIGFOX](http://makers.sigfox.com) account, as this app is using the SIGFOX API.  
+
+
 ##Install
 
 You should have  [NodeJS](http://nodejs.org) 5.0 up & running on your machine
