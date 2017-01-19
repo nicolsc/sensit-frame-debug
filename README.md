@@ -26,7 +26,7 @@ You should have  [NodeJS](http://nodejs.org) 5.0 up & running on your machine
 
 ##Configure
 
-Set the following env vars in a longocal `config.js`, with your SIGFOX API Credentials: 
+Set the following env vars in a local `config.js`, with your SIGFOX API Credentials: 
 
 	module.exports = {
 	  SIGFOX_USERNAME: 'xxx',
