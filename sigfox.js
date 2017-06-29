@@ -65,27 +65,28 @@ SIGFOXMsg.prototype.getMode = function(){
   }
 };
 SIGFOXMsg.prototype.getBattery = function(){
-  //MSB : first byte's last bit
+
+  //MSB : first byte's first bit
   var MSB = this.bytes[0] >> 7;
   //LSB : second byte's trailing 4 bits
-  var LSB = this.bytes[1] >> 4;
-  
-  //console.log("Battery", MSB, LSB, MSB ? LSB*16 : LSB);
-  
-  this.battery =(((MSB*16)+LSB) + 54) / 20;
-  
-  
+  var LSB = this.bytes[1] & 0b1111;
+
+  //console.log("Battery", MSB, LSB, (MSB*16)+LSB);
+
+  this.battery =(((MSB*16)+LSB) * 2.7) / 20;
+
+
 };
 SIGFOXMsg.prototype.getValues = function(){
   this.getTemperatureLowPrecision();
-  
+
   switch(this.mode){
       case 'Temperature':
         if (this.frameType !== 'Alert'){
           this.getHumidity();
         }
         this.getTemperature();
-        
+
         break;
       case 'Light':
         this.getLight();
