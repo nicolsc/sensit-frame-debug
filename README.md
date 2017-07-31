@@ -1,5 +1,5 @@
-#Sensit v2 - Frame debug
-##What
+# Sensit v2 - Frame debug
+## What
 * Fetch the last messages for a given deviceid
 * Try to parse the frame, to extract
   * Active mode
@@ -11,12 +11,12 @@
 
 
 
-##Prerequisites 
+## Prerequisites 
 
 Your [Sensit](http://sensit.io) should be registered to your [SIGFOX](http://makers.sigfox.com) account, as this app is using the SIGFOX API.  
 
 
-##Install
+## Install
 
 You should have  [NodeJS](http://nodejs.org) 5.0 up & running on your machine
 
@@ -24,7 +24,7 @@ You should have  [NodeJS](http://nodejs.org) 5.0 up & running on your machine
 	$ npm install
 	$ npm start
 
-##Configure
+## Configure
 
 Set the following env vars in a local `config.js`, with your SIGFOX API Credentials: 
 
@@ -33,7 +33,7 @@ Set the following env vars in a local `config.js`, with your SIGFOX API Credenti
 	  SIGFOX_PASSWORD: 'xxx'
 	};
 
-##Use
+## Use
 
 Open [http://localhost:8000/{deviceId}](http://localhost:8000/{deviceId})
 
