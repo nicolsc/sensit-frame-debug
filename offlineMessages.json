@@ -1,13 +1,11 @@
 {
-  "data" : [ {"data":"c2646418"}, {"data":"c2648a17"}, {"data":"c2645b16"},
-            {
-    "device" : "FAF7E",
-    "time" : 1454069321,
-    "data" : "c2640219",
-    "snr" : "17.35",
-    "linkQuality" : "AVERAGE"
-  }, {"data":"E9671854"} , {"data":"A9670d19"}],
-  "paging" : {
-    "next" : "https://backend.sigfox.com/api/devices/FAF7E/messages?limit=100&before=1453911380"
-  }
+"data":[
+{"data":"c2646418"},
+{"data":"deadbeaf"},
+{"data":"e9671854"},
+{"data":"01573448"},
+  {"data":"a1790520"}
+
+
+]
 }
